@@ -1,0 +1,63 @@
+body {
+  margin: 0px;
+  overflow: hidden;
+}
+
+.backgroundCanvas {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+}
+
+.controlWidget {
+  position: absolute;
+  left: 50px;
+  bottom: 50px;
+  height: 250px;
+  width: 300px;
+  display: flex;
+  border: 2px solid lightgrey;
+  background: rgba(255, 255, 255, 0.4);
+  flex-direction: column;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.widgetRow {
+  height: 24px;
+  width: 100%;
+  margin-bottom: 10px;
+  display: flex;
+}
+
+.widgetLabel {
+  flex-shrink: 0;
+  margin-right: 10px;
+  line-height: 24px;
+  font-weight: 600;
+}
+.widgetLabel:after {
+  content: ":";
+}
+
+.widgetInput {
+  flex: 1;
+}
+
+.selectDropDown {
+  width: 100%;
+}
+
+.widgetButton {
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  cursor: pointer;
+  font-weight: 600;
+  flex: 1;
+  background-color: lightgrey;
+  border: 1px solid darkgrey;
+}
+.widgetButton.selected {
+  border: 2px solid red;
+}/*# sourceMappingURL=index.css.map */
