@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/controlWidget.scss";
 // export class ControlWidget
 // {
@@ -31,30 +31,49 @@ import "../styles/controlWidget.scss";
 // 	}
 // }
 export const ControlWidget = ({ model, clearGrid }) => {
+    const [state, setState] = useState({
+        palette: model.getSelectedPalette(),
+        type: model.getSelectedDrawer(),
+        lineWidth: model.getLineWidth(),
+        spreadFactor: model.getSpreadFactorPercentage(),
+        colorFactor: model.getColorChangePercentage(),
+        range: model.getRangePercentage()
+    });
+    const updateModel = () => {
+        model.setColorChangePercentage(state.colorFactor);
+        model.setLineWidth(state.lineWidth);
+        model.setRangePercentage(state.range);
+        model.setSpreadFactorPercentage(state.spreadFactor);
+        model.setSelectedPallette(state.palette);
+        model.setSelectedDrawer(state.type);
+    };
+    useEffect(() => {
+        updateModel();
+    }, [state]);
     return (React.createElement("div", { className: "controlWidget", id: "controlWidget" },
         React.createElement("div", { className: "widgetRow" },
-            React.createElement("div", { className: "widgetLabel" }, "Palette"),
-            React.createElement("select", { id: "paletteOptions", className: "selectDropDown", onChange: (e) => model.setSelectedPalette(e) },
+            React.createElement("label", { className: "widgetLabel", htmlFor: "paletteOptions" }, "Palette"),
+            React.createElement("select", { id: "paletteOptions", className: "selectDropDown", value: state.palette, onChange: (e) => { setState(Object.assign(Object.assign({}, state), { palette: e.currentTarget.value })); } },
                 React.createElement("option", { value: "random" }, " Random "),
                 React.createElement("option", { value: "dark" }, " Dark "),
                 React.createElement("option", { value: "forest" }, " Forest "))),
         React.createElement("div", { className: "widgetRow", id: "drawerTypeButtons" },
-            React.createElement("div", { className: "widgetLabel" }, "Type"),
-            React.createElement("select", { id: "drawerTypeOptions", className: "selectDropDown", onChange: (e) => model.setSelectedDrawer(e) },
+            React.createElement("label", { className: "widgetLabel", htmlFor: "drawerTypeOptions" }, "Type"),
+            React.createElement("select", { id: "drawerTypeOptions", className: "selectDropDown", value: state.type, onChange: (e) => { setState(Object.assign(Object.assign({}, state), { type: e.currentTarget.value })); } },
                 React.createElement("option", { value: "line" }, "Line"),
                 React.createElement("option", { value: "flood" }, "Flood"))),
         React.createElement("div", { className: "widgetRow" },
-            React.createElement("div", { className: "widgetLabel" }, "Line Width"),
-            React.createElement("input", { className: "widgetInput", defaultValue: model.lineWidth, min: "1", max: "50", type: "number", id: "lineWidthInput", onInput: (e) => model.setLineWidth(e) })),
+            React.createElement("label", { className: "widgetLabel", htmlFor: "lineWidthInput" }, "Line Width"),
+            React.createElement("input", { className: "widgetInput", value: state.lineWidth, min: "1", max: "50", type: "number", id: "lineWidthInput", onInput: (e) => { setState(Object.assign(Object.assign({}, state), { lineWidth: Number(e.currentTarget.value) })); } })),
         React.createElement("div", { className: "widgetRow" },
-            React.createElement("div", { className: "widgetLabel" }, "Spread Factor"),
-            React.createElement("input", { className: "widgetInput", type: "range", defaultValue: model.spreadFactor, min: "0", max: "100", id: "lineSpreadInput", onInput: (e) => model.setSpreadFactor(e) })),
+            React.createElement("label", { className: "widgetLabel", htmlFor: "lineSpreadInput" }, "Spread Factor"),
+            React.createElement("input", { className: "widgetInput", type: "range", value: state.spreadFactor, min: "0", max: "100", id: "lineSpreadInput", onInput: (e) => { setState(Object.assign(Object.assign({}, state), { spreadFactor: Number(e.currentTarget.value) })); } })),
         React.createElement("div", { className: "widgetRow" },
-            React.createElement("div", { className: "widgetLabel" }, "Color Factor"),
-            React.createElement("input", { className: "widgetInput", type: "range", defaultValue: model.colorChangeRate, min: "0", max: "100", id: "colorChangeInput", onInput: (e) => model.setColorChange(e) })),
+            React.createElement("label", { className: "widgetLabel", htmlFor: "colorChangeInput" }, "Color Factor"),
+            React.createElement("input", { className: "widgetInput", type: "range", value: state.colorFactor, min: "0", max: "100", id: "colorChangeInput", onInput: (e) => { setState(Object.assign(Object.assign({}, state), { "colorFactor": Number(e.currentTarget.value) })); } })),
         React.createElement("div", { className: "widgetRow" },
-            React.createElement("div", { className: "widgetLabel" }, "Range"),
-            React.createElement("input", { className: "widgetInput", type: "range", defaultValue: model.range, min: "0", max: "1000", id: "rangeInput", onInput: (e) => model.setRange(e) })),
+            React.createElement("label", { className: "widgetLabel", htmlFor: "rangeInput" }, "Range"),
+            React.createElement("input", { className: "widgetInput", type: "range", value: state.range, min: "0", max: "100", id: "rangeInput", onInput: (e) => { setState(Object.assign(Object.assign({}, state), { "range": Number(e.currentTarget.value) })); } })),
         React.createElement("div", { className: "widgetRow" },
             React.createElement("div", { className: "widgetButton", id: "clearCanvasButton", onClick: () => clearGrid() }, "Clear Canvas"))));
 };

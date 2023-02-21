@@ -2,7 +2,7 @@ import { LineDrawer } from "./LineDrawer.js";
 import { FloodDrawer } from "./FloodDrawer.js";
 export class DrawerFactory {
     static getDrawer(model, x, y) {
-        switch (model.selectedDrawerType) {
+        switch (model.getSelectedDrawer()) {
             case "line":
                 return new LineDrawer(model, x, y);
             case "flood":

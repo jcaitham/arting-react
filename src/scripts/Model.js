@@ -23,9 +23,9 @@ export class Model {
     }
     setDefaultValues() {
         this.lineWidth = 5;
-        this.spreadFactor = .5;
-        this.range = 500;
-        this.colorChangeRate = 20;
+        this.spreadFactor = 50;
+        this.range = 50;
+        this.colorChangeRate = 50;
         this.selectedDrawerType = "flood";
         this.selectedPalette = "random";
     }
@@ -42,24 +42,49 @@ export class Model {
             }
         }
     }
-    setLineWidth(event) {
-        this.lineWidth = Number(event.currentTarget.value);
+    getLineWidth() {
+        return this.lineWidth;
     }
-    setSpreadFactor(event) {
-        const temp = Number(event.currentTarget.value) / 100;
-        this.spreadFactor = temp * (this.spreadFactorMax - this.spreadFactorMin);
+    getSpreadFactor() {
+        return this.spreadFactor / 100 * (this.spreadFactorMax - this.spreadFactorMin);
     }
-    setColorChange(event) {
-        const temp = Number(event.currentTarget.value) / 100;
-        this.colorChangeRate = temp * (this.colorChangeMax - this.colorChangeMin);
+    getColorChange() {
+        return this.colorChangeRate / 100 * (this.colorChangeMax - this.colorChangeMin);
     }
-    setSelectedPalette(event) {
-        this.selectedPalette = String(event.currentTarget.value);
+    getSelectedPalette() {
+        return this.selectedPalette;
     }
-    setSelectedDrawer(event) {
-        this.selectedDrawerType = String(event.currentTarget.value);
+    getSelectedDrawer() {
+        return this.selectedDrawerType;
     }
-    setRange(event) {
-        this.range = Number(event.currentTarget.value);
+    getRange() {
+        return this.range / 100 * (this.maxRange - this.minRange);
+    }
+    getRangePercentage() {
+        return this.range;
+    }
+    getColorChangePercentage() {
+        return this.colorChangeRate;
+    }
+    getSpreadFactorPercentage() {
+        return this.spreadFactor;
+    }
+    setLineWidth(val) {
+        this.lineWidth = Number(val);
+    }
+    setSelectedPallette(val) {
+        this.selectedPalette = val;
+    }
+    setColorChangePercentage(val) {
+        this.colorChangeRate = Number(val);
+    }
+    setSelectedDrawer(val) {
+        this.selectedDrawerType = val;
+    }
+    setRangePercentage(val) {
+        this.range = Number(val);
+    }
+    setSpreadFactorPercentage(val) {
+        this.spreadFactor = Number(val);
     }
 }

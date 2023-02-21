@@ -5,15 +5,15 @@ export class BaseDrawer {
     }
     ;
     get spreadFactor() {
-        return this.model.spreadFactor;
+        return this.model.getSpreadFactor();
     }
     ;
     constructor(model, initialX, initialY) {
         this.allowCollisions = false;
         this.range = 0;
         this.model = model;
-        this.lineWidth = model.lineWidth;
-        this.range = model.range;
+        this.lineWidth = model.getLineWidth();
+        this.range = model.getRange();
         this.palette = PaletteFactory.getPalette(model);
         initialX = initialX - (initialX % this.lineWidth);
         initialY = initialY - (initialY % this.lineWidth);

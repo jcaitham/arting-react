@@ -4,7 +4,7 @@ import { RandomPalette } from "./RandomPalette.js";
 export class PaletteFactory {
     static getPalette(model) {
         let palette;
-        switch (model.selectedPalette) {
+        switch (model.getSelectedPalette()) {
             case "random":
                 palette = new RandomPalette();
                 break;
@@ -18,7 +18,7 @@ export class PaletteFactory {
                 palette = new RandomPalette();
                 break;
         }
-        palette.initialize(model.colorChangeRate);
+        palette.initialize(model.getColorChange());
         return palette;
     }
 }
