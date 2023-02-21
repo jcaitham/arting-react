@@ -1,0 +1,55 @@
+.controlWidget {
+	position: absolute;
+	left: 50px;
+	bottom: 50px;
+	height: 250px;
+	width: 300px;
+	display: flex;
+	border: 2px solid lightgrey;
+	background: rgba(256, 256, 256, .4);
+	flex-direction: column;
+	padding: 10px;
+	box-sizing: border-box;
+}
+
+.widgetRow {
+	height: 24px;
+	width: 100%;
+	margin-bottom: 10px;
+	display: flex;
+}
+
+.widgetLabel {
+	flex-shrink: 0;
+	margin-right: 10px;
+	line-height: 24px;
+	font-weight: 600;
+
+	&:after {
+		content: ":";
+	}
+}
+
+.widgetInput {
+	flex: 1;
+}
+
+.selectDropDown {
+	width: 100%;
+}
+
+.widgetButton {
+	height: 24px;
+	line-height: 24px;
+	text-align: center;
+	cursor: pointer;
+	font-weight: 600;
+	flex: 1;
+
+	background-color: lightgrey;
+	border: 1px solid darkgrey;
+
+	&.selected {
+		border: 2px solid red;
+	}
+}
