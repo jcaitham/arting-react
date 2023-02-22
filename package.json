@@ -1,7 +1,10 @@
 {
 	"name": "@jcaitham/arting-react",
 	"type": "module",
-	"version": "0.1.2",
+	"exports": {
+		".": "./src/App.js"
+	},
+	"version": "1.0.0",
 	"private": false,
 	"dependencies": {
 		"@testing-library/jest-dom": "^5.16.5",
@@ -40,7 +43,6 @@
 		]
 	},
 	"description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
-	"main": "index.js",
 	"publishConfig": {
 		"registry": "https://npm.pkg.github.com/@jcaitham"
 	},
