@@ -18,13 +18,14 @@ export class aRtiNG
 
 	constructor(model: Model, canvas: HTMLCanvasElement)
 	{
-		this.canvas = document.getElementById("backgroundCanvas") as HTMLCanvasElement;
-		this.canvas.addEventListener("mousedown", this.onCanvasClick.bind(this));
-		this.canvas.addEventListener("mousemove", this.onCanvasMouseMove.bind(this));
+		this.canvas = canvas;
+		canvas.addEventListener("mousedown", this.onCanvasClick.bind(this));
+		canvas.addEventListener("mousemove", this.onCanvasMouseMove.bind(this));
 
-		this.canvas.width = window.innerWidth;
-		this.canvas.height = window.innerHeight;
-		this.canvasContext = this.canvas.getContext("2d", { alpha: false }) as CanvasRenderingContext2D;
+		canvas.width = canvas.clientWidth;
+		canvas.height = canvas.clientHeight;
+
+		this.canvasContext = canvas.getContext("2d", { alpha: false }) as CanvasRenderingContext2D;
 		this.model = model;
 		this.drawers = [];
 
@@ -82,10 +83,9 @@ export class aRtiNG
 		this.canvas.innerHTML = "";
 		this.canvasContext.clearRect(0, 0, this.canvas.width, this.canvas.height);
 		this.drawers = [];
-		//this.canvas.width = window.innerWidth;
-		//this.canvas.height = window.innerHeight;
+		this.canvas.width = this.canvas.clientWidth;
+		this.canvas.height = this.canvas.clientHeight;
 		this.canvasContext = this.canvas.getContext("2d") as CanvasRenderingContext2D;
-		//this.model.resetModel(this.canvas.width, this.canvas.height);
 	}
 
 }
