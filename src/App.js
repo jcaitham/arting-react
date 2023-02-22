@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { Model } from './scripts/Model.js';
 import { aRtiNG } from './scripts/aRtiNG.js';
 import { ControlWidget } from './scripts/controlWidget.js';
+import "./styles/App.scss";
 function App() {
     const canvasRef = useRef(null);
     const behaviorRef = useRef(null);
@@ -18,7 +19,7 @@ function App() {
         return () => window.removeEventListener("resize", () => resetEverything());
     }, []);
     return (React.createElement(React.Fragment, null,
-        React.createElement("canvas", { id: "backgroundCanvas", width: "100%", height: "100%", className: "backgroundCanvas", ref: canvasRef }),
+        React.createElement("canvas", { id: "backgroundCanvas", className: "backgroundCanvas", ref: canvasRef }),
         React.createElement(ControlWidget, { model: modelRef.current, clearGrid: resetEverything })));
 }
 export default App;

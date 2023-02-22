@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { Model } from './scripts/Model.js';
 import { aRtiNG } from './scripts/aRtiNG.js';
 import { ControlWidget } from './scripts/controlWidget.js';
+import "./styles/App.scss";
 
 function App()
 {
@@ -28,7 +29,7 @@ function App()
 
 	return (
 		<>
-			<canvas id="backgroundCanvas" width="100%" height="100%" className="backgroundCanvas" ref={canvasRef}></canvas>
+			<canvas id="backgroundCanvas" className="backgroundCanvas" ref={canvasRef}></canvas>
 
 			<ControlWidget model={modelRef.current} clearGrid={resetEverything} />
 		</>
