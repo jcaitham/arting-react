@@ -16,7 +16,8 @@ function App() {
         resetEverything();
         behaviorRef.current = new aRtiNG(modelRef.current, canvasRef.current);
         window.addEventListener("resize", () => resetEverything());
-        return () => window.removeEventListener("resize", () => resetEverything());
+        // on unmount, we should clean up our resize handler, and also call stop() on the behavior, so that it can stop the timer interval and do other cleanup
+        return () => { var _a; window.removeEventListener("resize", () => resetEverything()); (_a = behaviorRef.current) === null || _a === void 0 ? void 0 : _a.stop(); };
     }, []);
     return (React.createElement(React.Fragment, null,
         React.createElement("canvas", { id: "backgroundCanvas", className: "backgroundCanvas", ref: canvasRef }),

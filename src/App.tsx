@@ -24,7 +24,8 @@ function App()
 		behaviorRef.current = new aRtiNG(modelRef.current, canvasRef.current as HTMLCanvasElement);
 		window.addEventListener("resize", () => resetEverything());
 
-		return () => window.removeEventListener("resize", () => resetEverything());
+		// on unmount, we should clean up our resize handler, and also call stop() on the behavior, so that it can stop the timer interval and do other cleanup
+		return () => { window.removeEventListener("resize", () => resetEverything()); behaviorRef.current?.stop(); };
 	}, []);
 
 	return (

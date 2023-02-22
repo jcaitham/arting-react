@@ -16,6 +16,8 @@ export class aRtiNG
 
 	private drawsPerInterval: number = 100;
 
+	private drawInterval: NodeJS.Timer;
+
 	constructor(model: Model, canvas: HTMLCanvasElement)
 	{
 		this.canvas = canvas;
@@ -31,7 +33,7 @@ export class aRtiNG
 
 		this.clearGrid();
 
-		setInterval(this.onTimer.bind(this), 0);
+		this.drawInterval = setInterval(this.onTimer.bind(this), 0);
 	}
 
 	private onTimer(): void
@@ -56,6 +58,12 @@ export class aRtiNG
 			console.log("splices took: " + (document as any).jgcTemp);
 
 		}
+	}
+
+	public stop(): void
+	{
+		clearInterval(this.drawInterval);
+		this.drawers = [];
 	}
 
 

@@ -12,7 +12,7 @@ export class aRtiNG {
         this.model = model;
         this.drawers = [];
         this.clearGrid();
-        setInterval(this.onTimer.bind(this), 0);
+        this.drawInterval = setInterval(this.onTimer.bind(this), 0);
     }
     onTimer() {
         if (this.drawers.length > 0) {
@@ -30,6 +30,10 @@ export class aRtiNG {
             }
             console.log("splices took: " + document.jgcTemp);
         }
+    }
+    stop() {
+        clearInterval(this.drawInterval);
+        this.drawers = [];
     }
     onCanvasClick(event) {
         this.drawers.push(DrawerFactory.getDrawer(this.model, event.clientX, event.clientY));
