@@ -1,4 +1,4 @@
-import { IColor } from "../drawers/BaseDrawer";
+import { IColor } from "../drawers/BaseDrawer.js";
 import { BasePalette } from "./BasePalette.js";
 
 

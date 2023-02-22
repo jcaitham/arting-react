@@ -1,5 +1,5 @@
-import { Model } from "../Model";
-import { BasePalette } from "../palettes/BasePalette";
+import { Model } from "../Model.js";
+import { BasePalette } from "../palettes/BasePalette.js";
 import { PaletteFactory } from "../palettes/PaletteFactory.js";
 
 

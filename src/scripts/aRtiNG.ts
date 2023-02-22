@@ -1,4 +1,3 @@
-import { ControlWidget } from "./controlWidget.js";
 import { BaseDrawer } from "./drawers/BaseDrawer.js";
 import { DrawerFactory } from "./drawers/DrawerFactory.js";
 import { Model } from "./Model.js";
