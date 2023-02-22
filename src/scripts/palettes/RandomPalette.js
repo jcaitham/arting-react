@@ -6,9 +6,9 @@ export class RandomPalette extends BasePalette {
         this.randomRedMultiplier = 1;
         this.randomGreenMultiplier = 1;
         this.randomBlueMultiplier = 1;
-        this.red.min = 150;
-        this.blue.min = 150;
-        this.green.min = 150;
+        this.red.min = 0;
+        this.blue.min = 0;
+        this.green.min = 0;
         this.randomDeltaMultiplier = this.newRandomMultiplier();
     }
     initialize(colorChangeRate) {
@@ -61,6 +61,7 @@ export class RandomPalette extends BasePalette {
                 }
                 break;
         }
+        console.log("red: " + result.red, " green: " + result.green + " blue: " + result.blue);
         return result;
     }
     newRandomMultiplier() {

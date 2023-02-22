@@ -88,6 +88,9 @@ export const ControlWidget = ({ model, clearGrid }: { model: Model, clearGrid: F
 					<option value="random"> Random </option>
 					<option value="dark"> Dark </option>
 					<option value="forest"> Forest </option>
+					<option value="sunset"> Sunset </option>
+					<option value="forest2"> Forest2 </option>
+					<option value="ocean"> Ocean </option>
 				</select>
 			</div>
 			<div className="widgetRow" id="drawerTypeButtons" >

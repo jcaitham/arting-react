@@ -6,10 +6,10 @@ export class Model {
         this.spreadFactorMax = 1;
         this.range = 0; // [1, 1000]
         this.minRange = 1;
-        this.maxRange = 1000;
+        this.maxRange = 5000;
         this.colorChangeRate = 0; //[0, 100]
         this.colorChangeMin = 0;
-        this.colorChangeMax = 20;
+        this.colorChangeMax = 5;
         this.selectedDrawerType = "";
         this.selectedPalette = "";
         this.grid = [];

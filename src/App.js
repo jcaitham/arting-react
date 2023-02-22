@@ -8,10 +8,8 @@ function App() {
     const modelRef = useRef(new Model(0, 0));
     const resetEverything = () => {
         var _a, _b, _c;
-        //modelRef.current = new Model(canvasRef.current?.clientWidth || 0, canvasRef.current?.clientHeight || 0);
         modelRef.current.resetModel(((_a = canvasRef.current) === null || _a === void 0 ? void 0 : _a.clientWidth) || 0, ((_b = canvasRef.current) === null || _b === void 0 ? void 0 : _b.clientHeight) || 0);
         (_c = behaviorRef.current) === null || _c === void 0 ? void 0 : _c.clearGrid();
-        //behaviorRef.current = new aRtiNG(modelRef.current, canvasRef.current as HTMLCanvasElement);
     };
     useEffect(() => {
         resetEverything();

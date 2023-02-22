@@ -22,11 +22,9 @@ export class LineDrawer extends BaseDrawer {
         }
         this.randomizeOrder(cleansedOptions);
         cleansedOptions.sort((a, b) => { return this.getDistance(b, this.origin) - this.getDistance(a, this.origin); });
-        //cleansedOptions.sort((a, b) => {return this.getDistance(b, {x: this.grid.length , y: 0}) - this.getDistance(a, {x: this.grid.length, y: 0})});
         if (cleansedOptions.length == 0) {
             return false;
         }
-        //const factor = this.spreadFactor * 1/cleansedOptions.length;
         const factor = this.spreadFactor;
         let remaining = 1;
         const probability = [];
@@ -61,10 +59,6 @@ export class LineDrawer extends BaseDrawer {
         if (this.allowCollisions) {
             return true;
         }
-        // else if (this.grid[x][y] > 0 && this.grid[x][y] !== this.id) // allowed to overlap with itself
-        // {
-        //     return false;
-        // }
         if (this.grid[x][y] > 0) {
             return false;
         }

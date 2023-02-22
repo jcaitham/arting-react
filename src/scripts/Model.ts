@@ -11,11 +11,11 @@ export class Model
 
 	private range: number = 0; // [1, 1000]
 	private minRange: number = 1;
-	private maxRange: number = 1000;
+	private maxRange: number = 5000;
 
 	private colorChangeRate: number = 0; //[0, 100]
 	private colorChangeMin: number = 0;
-	private colorChangeMax: number = 20;
+	private colorChangeMax: number = 5;
 
 	public grid: number[][];
 
@@ -143,36 +143,4 @@ export class Model
 	{
 		this.spreadFactor = Number(val);
 	}
-
-	// public setLineWidth(event: FormEvent)
-	// {
-	// 	this.lineWidth = Number((event.currentTarget as HTMLInputElement).value);
-	// }
-
-	// public setSpreadFactor(event: Event)
-	// {
-	// 	const temp = Number((event.currentTarget as HTMLInputElement).value) / 100;
-	// 	this.spreadFactor = temp * (this.spreadFactorMax - this.spreadFactorMin);
-	// }
-
-	// public setColorChange(event: FormEvent): void
-	// {
-	// 	const temp = Number((event.currentTarget as HTMLInputElement).value) / 100;
-	// 	this.colorChangeRate = temp * (this.colorChangeMax - this.colorChangeMin);
-	// }
-
-	// public setSelectedPalette(event: ChangeEvent): void
-	// {
-	// 	this.selectedPalette = String((event.currentTarget as HTMLSelectElement).value);
-	// }
-
-	// public setSelectedDrawer(event: ChangeEvent): void
-	// {
-	// 	this.selectedDrawerType = String((event.currentTarget as HTMLSelectElement).value);
-	// }
-
-	// public setRange(event: FormEvent): void 
-	// {
-	// 	this.range = Number((event.currentTarget as HTMLInputElement).value);
-	// }
 }

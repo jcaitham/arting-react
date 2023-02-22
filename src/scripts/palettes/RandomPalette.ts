@@ -12,9 +12,9 @@ export class RandomPalette extends BasePalette
 	public constructor()
 	{
 		super();
-		this.red.min = 150;
-		this.blue.min = 150;
-		this.green.min = 150;
+		this.red.min = 0;
+		this.blue.min = 0;
+		this.green.min = 0;
 		this.randomDeltaMultiplier = this.newRandomMultiplier();
 	}
 
@@ -91,6 +91,7 @@ export class RandomPalette extends BasePalette
 				break;
 		}
 
+		console.log("red: " + result.red, " green: " + result.green + " blue: " + result.blue);
 		return result;
 	}
 

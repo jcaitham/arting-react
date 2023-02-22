@@ -13,18 +13,12 @@ function App()
 
 	const resetEverything = () =>
 	{
-
-		//modelRef.current = new Model(canvasRef.current?.clientWidth || 0, canvasRef.current?.clientHeight || 0);
 		modelRef.current.resetModel(canvasRef.current?.clientWidth || 0, canvasRef.current?.clientHeight || 0);
 		behaviorRef.current?.clearGrid();
-		//behaviorRef.current = new aRtiNG(modelRef.current, canvasRef.current as HTMLCanvasElement);
-
-
 	};
 
 	useEffect(() =>
 	{
-
 		resetEverything();
 		behaviorRef.current = new aRtiNG(modelRef.current, canvasRef.current as HTMLCanvasElement);
 		window.addEventListener("resize", () => resetEverything());

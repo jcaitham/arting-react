@@ -16,7 +16,6 @@ export class FloodDrawer extends BaseDrawer {
         adjOptions.push({ x: x - this.lineWidth, y: y, color: nextColor });
         let cleansedOptions = [];
         for (let option of adjOptions) {
-            //if (option.x >= 0 && option.x < this.grid.length - this.lineWidth && option.y >= 0 && option.y < this.grid[0].length - this.lineWidth)
             if (!this.isSquareAvailable(option.x, option.y)) {
                 continue;
             }
@@ -25,30 +24,11 @@ export class FloodDrawer extends BaseDrawer {
             }
             cleansedOptions.push(option);
         }
-        //console.log("randomizing " + cleansedOptions.length + " options");
         this.randomizeOrder(cleansedOptions);
-        //cleansedOptions.sort((a, b) => {return this.getDistance(b, this.origin) - this.getDistance(a, this.origin)});
-        //cleansedOptions.sort((a, b) => {return this.getDistance(b, {x: this.grid.length , y: 0}) - this.getDistance(a, {x: this.grid.length, y: 0})});
-        //const factor = this.spreadFactor * 1/cleansedOptions.length;
-        const factor = this.spreadFactor;
-        let remaining = 1;
-        const probability = [];
-        for (let i = 0; i < cleansedOptions.length; i++) {
-            if (i == cleansedOptions.length - 1) {
-                probability.push(remaining);
-            }
-            else {
-                probability.push(factor * remaining);
-                remaining *= (1 - factor);
-            }
-        }
-        const r = Math.random();
-        let sum = 0;
-        // probability will be something like [.4, .3, .2, .1], and cleansed options is sorted furtherFromOrigin -> closerToOrigin, 
-        // so we want a higher chance of choosing a point further from the origin
         for (let i = 0; i < cleansedOptions.length; i++) {
             let option = cleansedOptions[i];
             if (this.isSquareAvailable(option.x, option.y)) {
+                // higher spread factor means our new points will be placed near the front of the queue, producing long chains (ala dfs).  Low spread factor will give an effect more like bfs
                 let max = Math.floor(Math.pow(Math.random(), this.spreadFactor * 10) * this.frontier.length);
                 //console.log("max = " + max);
                 let position = Math.floor(Math.random() * (max + 1));
@@ -57,17 +37,6 @@ export class FloodDrawer extends BaseDrawer {
                 let end = performance.now();
                 document.jgcTemp += (end - start);
             }
-            //this.frontier.push(cleansedOptions[i]);
-            // sum += probability[i];
-            // if (r < sum)
-            // {
-            //     const option = cleansedOptions[i];
-            //     // only continue this frontier if we chose something that wouldn't send us off the edge of the canvas
-            //     if (option.x >= 0 && option.x < this.grid.length - this.lineWidth && option.y >= 0 && option.y <= this.grid[0].length)
-            //     {
-            //         this.frontier.push(option);
-            //     }
-            // }
         }
         return this.frontier.length !== 0;
     }

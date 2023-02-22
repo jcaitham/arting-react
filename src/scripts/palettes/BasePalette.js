@@ -19,8 +19,8 @@ export class BasePalette {
         let result = { red: color.red, green: color.green, blue: color.blue, activeIdx: color.activeIdx };
         switch (color.activeIdx) {
             case 0:
-                result.red = Math.min(this.red.max, result.red + this.red.delta);
-                result.blue = Math.max(this.blue.min, result.blue - this.blue.delta);
+                result.red = this.clampRed(result.red + this.red.delta);
+                result.blue = this.clampBlue(result.blue - this.blue.delta);
                 if (result.red === this.red.max || result.blue === this.blue.min) {
                     result.activeIdx = 1;
                 }
@@ -61,12 +61,12 @@ export class BasePalette {
         return Math.random() * this.getBlueRange() + this.blue.min;
     }
     clampBlue(blue) {
-        return Math.min(this.blue.max, Math.max(0, blue));
+        return Math.min(this.blue.max, Math.max(this.blue.min, blue));
     }
     clampRed(red) {
-        return Math.min(this.red.max, Math.max(0, red));
+        return Math.min(this.red.max, Math.max(this.red.min, red));
     }
     clampGreen(green) {
-        return Math.min(this.green.max, Math.max(0, green));
+        return Math.min(this.green.max, Math.max(this.green.min, green));
     }
 }
