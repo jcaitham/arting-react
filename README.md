@@ -1,4 +1,4 @@
-#aRtiNG
+# aRtiNG
 
 I originally created this as a fun evening project in a different repository, and slowly added features and functionality as I had ideas.  The project uses a `<canvas>` and some different painting algorithms to create pseudo-random colors and shapes.  You can control various parameters of the painting algorithms via the control panel at the bottom.  I originally wrote this in plain Typescript, but I've converted the outer couple of layers into React components just to make them easier to use in my other React-based tools.  
 
